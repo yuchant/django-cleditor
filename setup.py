@@ -2,7 +2,7 @@ from distutils.core import setup
 
 
 setup(
-    name="django-jinja2",
+    name="django-cleditor",
     version='0.1',
     description="A django form widget for CLEditor (a super clean, MIT licensed WYSIWYG HTML editor",
     long_description='',
