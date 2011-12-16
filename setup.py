@@ -1,5 +1,4 @@
-from distutils.core import setup
-
+from setuptools import setup, find_packages
 
 setup(
     name="django-cleditor",
@@ -10,9 +9,7 @@ setup(
     author_email="yuji@yujitomita.com",
     url="https://github.com/yuchant/django-cleditor",
     include_package_data=True,
-    packages=[
-        "cleditor",
-    ],
+    packages=find_packages(),
     classifiers=[
         "Environment :: Web Environment",
         "Intended Audience :: Developers",
