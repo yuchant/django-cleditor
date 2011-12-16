@@ -1,3 +1,12 @@
+What is it? 
+-----------
+
+A simple app that makes using an WYSIWYG editor (CLEditor) extremely easy.
+https://github.com/cleditor/cleditor
+
+CLEditor is MIT licensed. 
+
+
 Instructions
 ------------
 
