@@ -9,12 +9,10 @@ setup(
     author="Yuji Tomita",
     author_email="yuji@yujitomita.com",
     url="https://github.com/yuchant/django-cleditor",
+    include_package_data=True,
     packages=[
         "cleditor",
     ],
-    package_data={
-        'cleditor': ['static/*'],  
-    },
     classifiers=[
         "Environment :: Web Environment",
         "Intended Audience :: Developers",
