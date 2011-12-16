@@ -11,8 +11,10 @@ setup(
     url="https://github.com/yuchant/django-cleditor",
     packages=[
         "cleditor",
-        "cleditor.static",
     ],
+    package_data={
+        'cleditor': ['static/*'],  
+    },
     classifiers=[
         "Environment :: Web Environment",
         "Intended Audience :: Developers",
