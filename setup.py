@@ -8,8 +8,7 @@ setup(
     author="Yuji Tomita",
     author_email="yuji@yujitomita.com",
     url="https://github.com/yuchant/django-cleditor",
-    packages=['cleditor',],
-    package_dir={'cleditor': 'cleditor'},
+    packages=find_packages(),
     include_package_data=True,
     classifiers=[
         "Environment :: Web Environment",
