@@ -5,9 +5,11 @@ from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
 from django.utils.encoding import force_unicode
 from django.utils import simplejson
-
+from django.middleware.csrf import get_token
 from django.core.exceptions import ImproperlyConfigured
 from django.forms.util import flatatt
+
+
 
 class CLEditorWidget(forms.Textarea):
     """
@@ -15,17 +17,18 @@ class CLEditorWidget(forms.Textarea):
     Supports direct image uploads and embed.
     """
     class Media:
-        js = (
-            # is there a solution to use django's library without hacking into cleditor?
-            'cleditor/jquery-1.7.1.min.js',         
+        js = [
+            # 'cleditor/jquery-1.7.1.min.js',
+            'cleditor/jquery.cookie.js',
             'cleditor/jquery.cleditor.min.js',
-        )
+        ]
         css = {
             'all': ('cleditor/jquery.cleditor.css',),
         }
 
 
-    def __init__(self, config_name='default', *args, **kwargs):
+    def __init__(self, config_name='default', upload=False, *args, **kwargs):
+        self.upload = upload
         super(CLEditorWidget, self).__init__(*args, **kwargs)
             
 
@@ -36,9 +39,23 @@ class CLEditorWidget(forms.Textarea):
         # self.config['filebrowserBrowseUrl'] = reverse('ckeditor_browse')
         return mark_safe(u'''<textarea{flat_attrs}>{value}</textarea>
         <script type="text/javascript">
-            $("#{id}").cleditor();
+            django.jQuery("#{id}").cleditor();
         </script>'''.format(
             flat_attrs=flatatt(final_attrs),
             value=value,
             id=final_attrs.get('id'),
         ))
+
+class CLEditorUploadWidget(CLEditorWidget):
+    class Media:
+        js = [
+            # 'cleditor/jquery-1.7.1.min.js',
+            'cleditor/jquery.cookie.js',
+            'cleditor/jquery.cleditor.min.js',
+            'cleditor/jquery.cleditor.extimage.js',
+        ]
+        css = {
+            'all': ('cleditor/jquery.cleditor.css',),
+        }
+
+            
