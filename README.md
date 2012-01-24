@@ -1,5 +1,5 @@
 What is it? 
------------
+============
 
 A simple django app that makes using an WYSIWYG editor (CLEditor) extremely easy.
 Optionally includes a mixin that activates file upload handling.
@@ -9,15 +9,22 @@ Optionally includes a mixin that activates file upload handling.
 
 
 Installation instructions
--------------------------
+=========================
 
-Add ``cleditor`` to your ``INSTALLED_APPS`` and run the ``collectstatic`` management command to get the static files.
+Download and add ``django-cleditor`` to your packages.
 
+- `pip install django-cleditor`
+
+Add ``cleditor`` to your ``INSTALLED_APPS`` and run the ``collectstatic`` management command to ... collect the static files.
 
 
 
 Usage instructions
-------------------
+==================
+
+
+Editor only
+-----------
 
 This package supplies a ``CLEditorWidget`` form widget in ``cleditor.widgets`` that you can use anywhere the django forms framework expects a widget.
 
@@ -57,7 +64,7 @@ class MyModelAdmin(CLEditorUploadAdmin):
 
 
 Credits
--------
+========
 * Chris Landowski - cleditor jquery plugin creator
 http://premiumsoftware.net/cleditor/
 
