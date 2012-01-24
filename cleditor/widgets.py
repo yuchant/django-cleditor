@@ -68,7 +68,7 @@ class CLEditorUploadWidget(CLEditorWidget):
         # self.config['filebrowserBrowseUrl'] = reverse('ckeditor_browse')
         return mark_safe(u'''<textarea{flat_attrs}>{value}</textarea>
         <script type="text/javascript">
-            $.cleditor.buttons.image.uploadUrl = {upload_url};
+            $.cleditor.buttons.image.uploadUrl = '{upload_url}';
             $("#{id}").cleditor();
         </script>'''.format(
             flat_attrs=flatatt(final_attrs),
