@@ -17,7 +17,7 @@ Download and add ``django-cleditor`` to your packages however you wish.
 - Add ``cleditor`` to your ``INSTALLED_APPS``
 - Run the ``python manage.py collectstatic`` management command to ... collect the static files.
 - Use `cleditor.widgets.CLEditorWidget` anywhere a django form widget is expected.
-- For admin upload handling subclass `cleditor.admin.CLEditorUplaodAdmin` and use `cleditor.widgets.CLEditorUploadWidget` instead.
+- For admin upload handling subclass `cleditor.admin.CLEditorUploadAdmin` and use `cleditor.widgets.CLEditorUploadWidget` instead.
 
 
 
