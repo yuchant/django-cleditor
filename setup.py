@@ -3,8 +3,8 @@ from setuptools import setup, find_packages
 
 setup(
     name="django-cleditor",
-    version='0.1.5',
-    description="A django form widget for CLEditor (a super clean, MIT licensed WYSIWYG HTML editor)",
+    version='0.2.0',
+    description="A django form widget for CLEditor (a super clean, MIT licensed WYSIWYG HTML editor) that handles uploading",
     long_description='',
     author="Yuji Tomita",
     author_email="yuji@yujitomita.com",
