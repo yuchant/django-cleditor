@@ -11,11 +11,13 @@ Optionally includes a mixin that activates file upload handling.
 Installation instructions
 =========================
 
-Download and add ``django-cleditor`` to your packages.
+Download and add ``django-cleditor`` to your packages however you wish.
 
-- `pip install django-cleditor`
-
-Add ``cleditor`` to your ``INSTALLED_APPS`` and run the ``collectstatic`` management command to ... collect the static files.
+- The easiest method is to use pip: `pip install django-cleditor`
+- Add ``cleditor`` to your ``INSTALLED_APPS``
+- Run the ``python manage.py collectstatic`` management command to ... collect the static files.
+- Use `cleditor.widgets.CLEditorWidget` anywhere a django form widget is expected.
+- For admin upload handling subclass `cleditor.admin.CLEditorUplaodAdmin` and use `cleditor.widgets.CLEditorUploadWidget` instead.
 
 
 
