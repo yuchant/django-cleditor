@@ -74,7 +74,9 @@ To upload images without the admin panel, you'll have to map a URL to the upload
 
 from cleditor.admin import cleditor_upload_handler
 
-(r'^my-upload-handler/$', cleditor_upload_handler, {'upload_to': 'my_upload_directory'})
+urlpatterns = patterns('',
+	(r'^my-upload-handler/$', cleditor_upload_handler, {'upload_to': 'my_upload_directory'}),
+)
 ```
 
 
@@ -82,8 +84,7 @@ from cleditor.admin import cleditor_upload_handler
 # widget instantiation
 
 class MyForm(forms.Form):
-    myfield = forms.TextField(
-    	widget=CLEditorUploadAdmin(upload_url='path-to-my-upload-handler'))
+    myfield = forms.TextField(widget=CLEditorUploadAdmin(upload_url='path-to-my-upload-handler'))
 ```
 
 
