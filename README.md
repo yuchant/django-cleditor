@@ -45,8 +45,8 @@ _Note: If you need finer control over which textfields get overriden, look into 
 You're done!
 
 
-Upload handler
---------------
+Easy admin upload handler
+-------------------------
 
 To allow users to upload via a the insert image widget, you must use the `CLEditorUploadWidget` widget and you must subclass the included `ModelAdmin` which adds a fully csrf protected upload handler to your admin site.
 
@@ -63,12 +63,34 @@ class MyModelAdmin(CLEditorUploadAdmin):
 ```
 
 
+Stand alone uploader (non admin)
+--------------------------------
+
+To upload images without the admin panel, you'll have to map a URL to the upload handler and pass in your custom handler URL to the widget.
+
+
+```python
+# urls.py
+
+from cleditor.admin import cleditor_upload_handler
+
+(r'^my-upload-handler/$', cleditor_upload_handler, {'upload_to': 'my_upload_directory'})
+```
+
+
+```python
+# widget instantiation
+
+class MyForm(forms.Form):
+    myfield = forms.TextField(
+    	widget=CLEditorUploadAdmin(upload_url='path-to-my-upload-handler'))
+```
 
 
 Credits
 ========
-* Chris Landowski - cleditor jquery plugin creator
-http://premiumsoftware.net/cleditor/
-
-* Dmitry Dedukhim - original cleditor image upload plugin
+* Chris Landowski - original cleditor image upload plugin
 https://github.com/dmitry-dedukhin/cleditor-extimage-plugin
+
+* Dmitry Dedukhim - cleditor jquery plugin creator
+http://premiumsoftware.net/cleditor/
