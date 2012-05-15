@@ -5,6 +5,8 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.defaults import patterns
 from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+from django.views.decorators.csrf import csrf_exempt
 
 
 class CLEditorUploadAdmin(admin.ModelAdmin):
@@ -21,18 +23,15 @@ class CLEditorUploadAdmin(admin.ModelAdmin):
 		)
 		return my_urls + urls
 
+	
+	@csrf_exempt
 	def upload_handler(self, request):
 		"""
 		Handle widget uploader
 		"""
-		return cleditor_upload_handler(request, upload_to=self.upload_to)
+		if not request.POST:
+			raise http.Http404
 
-
-def cleditor_upload_handler(request, upload_to='cleditoruploads/'):
-	if not request.POST:
-		raise http.Http404
-
-	f = request.FILES['imageName']
-	result = default_storage.save(os.path.join(upload_to, f.name), f)
-	return http.HttpResponse('<div id="image">{static_url}{path}</div>'.format(static_url=settings.STATIC_URL, path=result))
-
+		f = request.FILES['imageName']
+		result = default_storage.save(os.path.join(self.upload_to, f.name), f)
+		return http.HttpResponse('<div id="image">{static_url}{path}</div>'.format(static_url=settings.STATIC_URL, path=result))
